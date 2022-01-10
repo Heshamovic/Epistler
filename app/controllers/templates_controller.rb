@@ -1,9 +1,9 @@
 class TemplatesController < ApplicationController
   before_action :set_template, only: %i[ show edit update destroy ]
-
+  before_action :authenticate_user!
   # GET /templates or /templates.json
   def index
-    @templates = Template.all
+    @templates = Template.all.where(:user_id => current_user.id)
   end
 
   # GET /templates/1 or /templates/1.json
@@ -55,6 +55,12 @@ class TemplatesController < ApplicationController
       format.html { redirect_to templates_url, notice: "Template was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def authenticate_user!
+    # code here
   end
 
   private
