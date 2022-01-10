@@ -23,7 +23,17 @@
         <% if user_signed_in? %>
 
           <li class="nav-item">
-            <%= link_to current_user.inspect, edit_user_registration_path, class:"nav-link" %>
+            <% name = 'profile' %>
+            <% if current_user.name && current_user.name.size > 0%>
+              <% name = current_user.name %>
+              <% if current_user.surname && current_user.surname.size > 0 %>
+                <% name += ' ' + current_user.surname %>
+              <% end %>
+            <% elsif current_user.surname && current_user.surname.size > 0%>
+              <% name = current_user.surname %>
+            <% end %>
+            <% name = name.strip.titleize %>
+            <%= link_to name, edit_user_registration_path, class:"nav-link" %>
           </li>
 
           <li class="nav-item">
