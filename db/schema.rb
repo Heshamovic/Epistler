@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20220111225110) do
+ActiveRecord::Schema.define(version: 20220111225458) do
 
   create_table "groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3" do |t|
     t.string   "name"
@@ -35,6 +35,14 @@ ActiveRecord::Schema.define(version: 20220111225110) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_recipients_lists_on_user_id", using: :btree
+  end
+
+  create_table "recipients_recipients_lists", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3" do |t|
+    t.integer "recipients_id"
+    t.integer "recipients_lists_id"
+    t.integer "listing_type",        default: 1, null: false
+    t.index ["recipients_id"], name: "index_recipients_recipients_lists_on_recipients_id", using: :btree
+    t.index ["recipients_lists_id"], name: "index_recipients_recipients_lists_on_recipients_lists_id", using: :btree
   end
 
   create_table "templates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3" do |t|
@@ -63,5 +71,7 @@ ActiveRecord::Schema.define(version: 20220111225110) do
   add_foreign_key "groups", "users"
   add_foreign_key "recipients", "users"
   add_foreign_key "recipients_lists", "users"
+  add_foreign_key "recipients_recipients_lists", "recipients", column: "recipients_id"
+  add_foreign_key "recipients_recipients_lists", "recipients_lists", column: "recipients_lists_id"
   add_foreign_key "templates", "users"
 end
