@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20220111224814) do
+ActiveRecord::Schema.define(version: 20220111225110) do
 
   create_table "groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3" do |t|
     t.string   "name"
@@ -18,6 +18,15 @@ ActiveRecord::Schema.define(version: 20220111224814) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_groups_on_user_id", using: :btree
+  end
+
+  create_table "recipients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3" do |t|
+    t.string   "name"
+    t.string   "email"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_recipients_on_user_id", using: :btree
   end
 
   create_table "recipients_lists", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3" do |t|
@@ -52,6 +61,7 @@ ActiveRecord::Schema.define(version: 20220111224814) do
   end
 
   add_foreign_key "groups", "users"
+  add_foreign_key "recipients", "users"
   add_foreign_key "recipients_lists", "users"
   add_foreign_key "templates", "users"
 end
