@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   has_many :templates, dependent: :destroy
   has_many :recipients_lists, dependent: :destroy
+  has_many :groups, dependent: :destroy
 end

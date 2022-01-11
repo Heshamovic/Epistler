@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :groups
   resources :recipients_lists
   resources :templates
   devise_for :users
