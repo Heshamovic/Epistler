@@ -5,4 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, password_length: 8..128
 
   has_many :templates
+  has_many :recipients_lists
 end

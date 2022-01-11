@@ -1,0 +1,2 @@
+module RecipientsListsHelper
+end
