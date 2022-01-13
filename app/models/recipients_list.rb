@@ -1,4 +1,5 @@
 class RecipientsList < ApplicationRecord
   belongs_to :user
-  validates :name, uniqueness: { scope: :user_id }
+  validates :name, uniqueness: { scope: :user_id, case_sensitive: false }
+  has_many :recipients, through: :recipients_recipients_lists
 end
