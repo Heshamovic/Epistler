@@ -32,12 +32,12 @@
 
           <li class="nav-item">
             <% name = 'profile' %>
-            <% if current_user.name && current_user.name.size > 0%>
+            <% if !current_user.name.blank? %>
               <% name = current_user.name %>
-              <% if current_user.surname && current_user.surname.size > 0 %>
+              <% unless current_user.surname.blank? %>
                 <% name += ' ' + current_user.surname %>
               <% end %>
-            <% elsif current_user.surname && current_user.surname.size > 0%>
+            <% elsif !current_user.surname.blank? %>
               <% name = current_user.surname %>
             <% end %>
             <% name = name.strip.titleize %>
