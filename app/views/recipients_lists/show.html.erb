@@ -6,9 +6,10 @@
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @recipients_list.user %>
+  <strong>List Recipients:</strong>
 </p>
+
+<%= render 'recipients_form', recipients: @recipients_list.recipients %>
 
 <%= link_to 'Edit', edit_recipients_list_path(@recipients_list) %> |
 <%= link_to 'Back', recipients_lists_path %>

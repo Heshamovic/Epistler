@@ -1,0 +1,22 @@
+<table class="table table-striped table-hover">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Name</th>
+    <th scope="col">Email</th>
+    <th scope="col">Listing Type</th>
+    <th colspan="1"></th>
+  </tr>
+  </thead>
+  <tbody>
+    <% recipients.each do |recipient, id| %>
+      <tr>
+        <th scope="row"><%= id + 1 %>></th>
+        <td><%= recipient.name %></td>
+        <td><%= recipient.email %></td>
+        <td><%= recipient.listing_type %></td>
+        <td><%= link_to 'remove recipient', recipients_list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

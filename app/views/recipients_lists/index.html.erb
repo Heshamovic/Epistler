@@ -2,12 +2,12 @@
 
 <h1>Recipients Lists</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Name</th>
-      <th>User</th>
-      <th colspan="3"></th>
+      <th>Number of recipients in list</th>
+      <th colspan="4"></th>
     </tr>
   </thead>
 
@@ -15,10 +15,11 @@
     <% @recipients_lists.each do |recipients_list| %>
       <tr>
         <td><%= recipients_list.name %></td>
-        <td><%= recipients_list.user %></td>
+        <td><%= recipients_list.recipients.size %></td>
         <td><%= link_to 'Show', recipients_list %></td>
-        <td><%= link_to 'Edit', edit_recipients_list_path(recipients_list) %></td>
-        <td><%= link_to 'Destroy', recipients_list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Change List Name', edit_recipients_list_path(recipients_list) %></td>
+        <td><%= link_to 'Delete List', recipients_list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Add Recipient', recipients_list, method: :put %></td>
       </tr>
     <% end %>
   </tbody>
