@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  listing_type: 1
+  recipient: one
+  recipients_list: one
+
+two:
+  listing_type: 1
+  recipient: two
+  recipients_list: two
