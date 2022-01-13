@@ -3,7 +3,7 @@ class RecipientsController < ApplicationController
 
   # GET /recipients or /recipients.json
   def index
-    @recipients = Recipient.all
+    @recipients = Recipient.all.where(:user_id => current_user.id)
   end
 
   # GET /recipients/1 or /recipients/1.json
