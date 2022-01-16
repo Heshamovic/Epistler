@@ -19,7 +19,7 @@
         <td><%= link_to 'Show', recipients_list %></td>
         <td><%= link_to 'Change List Name', edit_recipients_list_path(recipients_list) %></td>
         <td><%= link_to 'Delete List', recipients_list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'Add Recipient', recipients_list, method: :put %></td>
+        <td><%= link_to 'Add Recipient', recipients_recipients_lists_new_path  %></td>
       </tr>
     <% end %>
   </tbody>
