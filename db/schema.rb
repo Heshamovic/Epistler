@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20220113211343) do
+ActiveRecord::Schema.define(version: 20220116113928) do
 
   create_table "recipients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3" do |t|
     t.string   "name"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20220113211343) do
   end
 
   create_table "recipients_recipients_lists", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3" do |t|
-    t.integer  "listing_type",       default: 1, null: false
+    t.integer  "listing_type",       default: 0, null: false
     t.integer  "recipient_id"
     t.integer  "recipients_list_id"
     t.datetime "created_at",                     null: false
