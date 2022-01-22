@@ -1,4 +1,42 @@
-<h1>Add new recipient to list </h1>
+<h1>Add NEW Recipient to <%= @recipients_list.name %> List</h1>
+<%= @recipients_recipients_list.errors.inspect %>
+<%= form_for(@recipients_recipients_list) do |f| %>
+  <% if @recipients_recipients_list.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@recipients_recipients_list.errors.count, "error") %> prohibited this addition from being saved:</h2>
 
+      <ul>
+        <% @recipients_recipients_list.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.email_field :recipient_id%>
+  </div>
+  <div class="field">
+    <%= f.text_field :recipients_list_id, id: :recipients_list_id , value: @recipients_list.id, type: :hidden %>
+  </div>
+
+  <div class="field">
+    <%= f.label 'recipient type in this list:' %>
+    <br>
+    <%= f.radio_button :listing_type, 'to'%>
+    <%= f.label :listing_type, 'to', :value => 'to'%>
+    <br>
+    <%= f.radio_button :listing_type, 'cc'%>
+    <%= f.label :listing_type, 'cc', :value => 'cc' %>
+    <br>
+    <%= f.radio_button :listing_type, 'bcc'%>
+    <%= f.label :listing_type, 'bcc', :value => 'bcc' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Add Recipient' %>
+  </div>
+<% end %>
 
 <%= link_to 'Back', recipients_lists_path %>
