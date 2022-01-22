@@ -9,13 +9,13 @@
   </tr>
   </thead>
   <tbody>
-    <% recipients.each do |recipient, id| %>
+    <% @recipients_list.recipients.each_with_index do |recipient, id| %>
       <tr>
-        <th scope="row"><%= id + 1 %>></th>
+        <th scope="row"><%= id + 1 %></th>
         <td><%= recipient.name %></td>
         <td><%= recipient.email %></td>
-        <td><%= recipient.listing_type %></td>
-        <td><%= link_to 'remove recipient', recipients_list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= recipients_listing_types[id].listing_type %></td>
+        <td><%= link_to 'remove recipient from list', recipients_recipients_list_path(recipients_listing_types[id].id), method: :delete, data: {confirm: "Are you Sure?"} %></td>
       </tr>
     <% end %>
   </tbody>
